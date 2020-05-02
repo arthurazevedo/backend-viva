@@ -55,7 +55,7 @@ module.exports = {
 
   async update(req, res) {
     const { email } = req.body;
-    const { id } = req.params;
+    const id = req.userId;
 
     const userExist = await User.findByPk(id);
     if (!userExist) return res.status(404).json({ error: 'User not found' });
