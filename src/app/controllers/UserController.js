@@ -52,4 +52,26 @@ module.exports = {
       process.env.JWT_SECRET),
     });
   },
+
+  async update(req, res) {
+    const { email } = req.body;
+    const { id } = req.params;
+
+    const userExist = await User.findByPk(id);
+    if (!userExist) return res.status(404).json({ error: 'User not found' });
+
+    if (userExist.email === email) {
+      const { shop_pass } = req.body;
+      await User.update({ shop_pass }, { where: { id } });
+      const user = await User.findByPk(id);
+
+      return res.json({
+        email: user.email,
+        name: user.name,
+        shop_pass: user.shop_pass,
+      });
+    }
+
+    return res.status(401).json({ error: 'Email does not match' });
+  },
 };
