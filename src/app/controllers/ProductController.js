@@ -38,15 +38,34 @@ module.exports = {
   async index(req, res) {
     const { category } = req.body;
     const { username } = req.params;
+    const store = await Store.findOne({ where: { username } });
+
+    const { name, description, url_image } = store;
 
     if (!category || category === 'all') {
       const products = await Product.findAll({ where: { username } });
-      return res.json(products);
+      return res.json({
+        store: {
+          username,
+          name,
+          description,
+          url_image,
+        },
+        products,
+      });
     }
 
     const products = await Product.findAll({ where: { username, category } });
 
-    return res.json(products);
+    return res.json({
+      store: {
+        username,
+        name,
+        description,
+        url_image,
+      },
+      products,
+    });
   },
 
 };
