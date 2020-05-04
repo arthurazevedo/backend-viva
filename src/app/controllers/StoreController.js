@@ -1,5 +1,7 @@
 const Store = require('../models/Store');
 const User = require('../models/User');
+const bucket = require('../../config/firebase');
+
 
 module.exports = {
   async store(req, res) {
@@ -15,11 +17,25 @@ module.exports = {
       username, name, city, address, whatsapp, email,
     } = req.body;
 
-    let { description, url_image } = req.body;
+    let { description } = req.body;
+
+    const { file } = req;
+
+    const bucketName = process.env.BUCKET;
+    const url_image = `http://storage.googleapis.com/${bucketName}/${file.filename}`;
+
+    if (file) {
+      await bucket.upload(file.path, {
+        public: true,
+        metadata: { contentType: `image/${req.extension}` },
+      }, (err, file) => {
+        if (err) {
+          console.log(err);
+        }
+      });
+    }
 
     if (!description) description = null;
-
-    if (!url_image) url_image = null;
 
     await Store.create({
       username,

@@ -23,11 +23,11 @@ routes.use(authMiddleware);
 routes.put('/user', UserController.update);
 routes.get('/user', UserController.index);
 
-routes.post('/store', StoreController.store);
-routes.get('/store', StoreController.index);
-
 const upload = multer(multerConfig);
 routes.post('/product', upload.single('file'), ProductController.store);
+
+routes.post('/store', upload.single('file'), StoreController.store);
+routes.get('/store', StoreController.index);
 
 routes.post('/category', CategoriesController.store);
 routes.get('/categories', CategoriesController.index);
