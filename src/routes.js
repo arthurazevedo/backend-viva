@@ -26,5 +26,6 @@ const upload = multer(multerConfig);
 routes.post('/product', upload.single('file'), ProductController.store);
 
 routes.post('/category', CategoriesController.store);
+routes.get('/categories', CategoriesController.index);
 
 module.exports = routes;

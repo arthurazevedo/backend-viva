@@ -16,4 +16,16 @@ module.exports = {
     return res.json({ message: 'Category created' });
   },
 
+  async index(req, res) {
+    const store = await Store.findOne({ where: { id_user: req.userId } });
+
+    const categories = await Categories.findAll({
+      where:
+      { username: store.username },
+    });
+
+    return res.json(categories);
+  },
+
+
 };
