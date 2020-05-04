@@ -4,10 +4,11 @@ const Sequelize = require('sequelize');
 const User = require('../app/models/User');
 const Store = require('../app/models/Store');
 const Product = require('../app/models/Product');
+const Categories = require('../app/models/Categories');
 
 const configDB = require('../config/database');
 
-const models = [User, Store, Product];
+const models = [User, Store, Product, Categories];
 
 class DataBase {
   constructor() {

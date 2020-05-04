@@ -9,6 +9,7 @@ class Product extends Model {
       description: Sequelize.STRING(120),
       url_image: Sequelize.STRING,
       aspect_ratio: Sequelize.DOUBLE,
+      category: Sequelize.STRING(20),
     }, {
       sequelize,
     });

@@ -4,11 +4,12 @@ const bucket = require('../../config/firebase');
 
 module.exports = {
   async store(req, res) {
-    const { name, price, description } = req.body;
+    const {
+      name, price, description, category,
+    } = req.body;
     const { username } = await Store.findByPk(req.userId);
     const { file } = req;
 
-    const projectId = process.env.PROJECT_ID;
     const bucketName = process.env.BUCKET;
 
     const url_image = `http://storage.googleapis.com/${bucketName}/${file.name}`;
@@ -28,6 +29,7 @@ module.exports = {
       price,
       description,
       url_image,
+      category,
     });
 
     return res.json({ message: 'Product created' });
