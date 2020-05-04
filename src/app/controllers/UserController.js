@@ -1,4 +1,3 @@
-require('dotenv').config();
 const axios = require('axios');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
@@ -11,12 +10,16 @@ module.exports = {
     const loginWith = req.query.by;
 
     const socialUser = (loginWith === 'facebook')
-      ? await axios.get(`https://graph.facebook.com/me?access_token=${token}`)
+      ? await axios.get(`https://graph.facebook.com/v2.5/me?fields=email,name,friends&access_token=${token}`)
       : await axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${token}`);
 
 
     const { email, name } = socialUser.data;
-    const url_image = socialUser.data.picture;
+    const { id } = socialUser.data;
+
+    const url_image = (loginWith === 'facebook')
+      ? `http://graph.facebook.com/${id}/picture?type=large`
+      : socialUser.data.picture;
 
     const userExist = await User.findOne({ where: { email } });
 
