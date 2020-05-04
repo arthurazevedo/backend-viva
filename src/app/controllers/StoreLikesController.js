@@ -16,4 +16,28 @@ module.exports = {
 
     return res.json({ message: 'Liked' });
   },
+
+  async index(req, res) {
+    const likes = await StoreLikes.findAll({ where: { id_user: req.userId } });
+
+    const getStores = async () => {
+      const stores = [];
+      for (let i = 0; i < likes.length; i++) {
+        const store = await Store.findOne({ where: { username: likes[i].username } });
+
+        stores.push({
+          username: store.username,
+          name: store.name,
+          url_image: store.url_image,
+        });
+        console.log(stores);
+      }
+
+      return stores;
+    };
+
+    const storesLiked = await getStores();
+
+    return res.json(storesLiked);
+  },
 };

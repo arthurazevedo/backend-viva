@@ -34,5 +34,6 @@ routes.post('/category', CategoriesController.store);
 routes.get('/categories', CategoriesController.index);
 
 routes.post('/store-like/:username', StoreLikesController.store);
+routes.get('/store-like', StoreLikesController.index);
 
 module.exports = routes;
