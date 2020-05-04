@@ -11,6 +11,7 @@ const CategoriesController = require('./app/controllers/CategoriesController');
 const SearchController = require('./app/controllers/SearchController');
 const StoreLikesController = require('./app/controllers/StoreLikesController');
 const FeedController = require('./app/controllers/FeedController');
+const ExplorerController = require('./app/controllers/ExplorerController');
 
 const routes = Router();
 
@@ -38,5 +39,7 @@ routes.post('/store-like/:username', StoreLikesController.store);
 routes.get('/store-like', StoreLikesController.index);
 
 routes.get('/feed', FeedController.index);
+
+routes.get('/explorer', ExplorerController.index);
 
 module.exports = routes;
