@@ -12,7 +12,7 @@ module.exports = {
 
     const bucketName = process.env.BUCKET;
 
-    const url_image = `http://storage.googleapis.com/${bucketName}/${file.name}`;
+    const url_image = `http://storage.googleapis.com/${bucketName}/${file.filename}`;
 
     await bucket.upload(file.path, {
       public: true,
