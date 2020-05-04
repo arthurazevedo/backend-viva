@@ -28,21 +28,14 @@ module.exports = {
     description: {
       type: Sequelize.STRING(200),
     },
-    city: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
     address: {
       type: Sequelize.STRING,
-      allowNull: false,
     },
     whatsapp: {
       type: Sequelize.STRING,
-      allowNull: false,
     },
     email: {
       type: Sequelize.STRING,
-      allowNull: false,
       unique: true,
     },
     url_image: {

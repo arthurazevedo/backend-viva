@@ -14,7 +14,7 @@ module.exports = {
     if (!user.shop_pass) return res.status(403).json({ error: 'User doesnt have a shop pass' });
 
     const {
-      username, name, city, address, whatsapp, email,
+      username, name, address, whatsapp, email,
     } = req.body;
 
     let { description } = req.body;
@@ -42,7 +42,6 @@ module.exports = {
       name,
       id_user: userId,
       description,
-      city,
       address,
       whatsapp,
       email,

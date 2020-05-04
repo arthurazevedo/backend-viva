@@ -7,7 +7,6 @@ class Store extends Model {
       username: Sequelize.STRING(20),
       name: Sequelize.STRING,
       description: Sequelize.STRING(200),
-      city: Sequelize.STRING,
       address: Sequelize.STRING,
       whatsapp: Sequelize.STRING,
       email: Sequelize.STRING,

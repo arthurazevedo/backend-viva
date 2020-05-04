@@ -5,10 +5,11 @@ const User = require('../app/models/User');
 const Store = require('../app/models/Store');
 const Product = require('../app/models/Product');
 const Categories = require('../app/models/Categories');
+const StoreLikes = require('../app/models/StoreLikes');
 
 const configDB = require('../config/database');
 
-const models = [User, Store, Product, Categories];
+const models = [User, Store, Product, Categories, StoreLikes];
 
 class DataBase {
   constructor() {

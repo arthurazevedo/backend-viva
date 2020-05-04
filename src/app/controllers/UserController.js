@@ -55,11 +55,13 @@ module.exports = {
       process.env.JWT_SECRET),
     });
   },
+
   async index(req, res) {
     const user = await User.findByPk(req.userId);
 
     return res.json(user);
   },
+
   async update(req, res) {
     const { email } = req.body;
     const id = req.userId;
