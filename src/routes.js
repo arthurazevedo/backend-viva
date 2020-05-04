@@ -10,6 +10,7 @@ const ProductController = require('./app/controllers/ProductController');
 const CategoriesController = require('./app/controllers/CategoriesController');
 const SearchController = require('./app/controllers/SearchController');
 const StoreLikesController = require('./app/controllers/StoreLikesController');
+const FeedController = require('./app/controllers/FeedController');
 
 const routes = Router();
 
@@ -35,5 +36,7 @@ routes.get('/categories/:username', CategoriesController.index);
 
 routes.post('/store-like/:username', StoreLikesController.store);
 routes.get('/store-like', StoreLikesController.index);
+
+routes.get('/feed', FeedController.index);
 
 module.exports = routes;

@@ -7,7 +7,7 @@ module.exports = {
     const {
       name, price, description, category,
     } = req.body;
-    const { username } = await Store.findByPk(req.userId);
+    const { username } = await Store.findOne({ where: { id_user: req.userId } });
     const { file } = req;
 
     const bucketName = process.env.BUCKET;
