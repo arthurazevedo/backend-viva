@@ -17,14 +17,16 @@ module.exports = {
   },
 
   async index(req, res) {
-    const store = await Store.findOne({ where: { id_user: req.userId } });
+    const { username } = req.params;
 
     const categories = await Categories.findAll({
       where:
-      { username: store.username },
+      { username },
     });
 
-    return res.json(categories);
+    const categoriesName = categories.map((category) => category.name);
+
+    return res.json(categoriesName);
   },
 
 

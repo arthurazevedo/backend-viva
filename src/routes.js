@@ -31,7 +31,7 @@ routes.post('/store', upload.single('file'), StoreController.store);
 routes.get('/store', StoreController.index);
 
 routes.post('/category', CategoriesController.store);
-routes.get('/categories', CategoriesController.index);
+routes.get('/categories/:username', CategoriesController.index);
 
 routes.post('/store-like/:username', StoreLikesController.store);
 routes.get('/store-like', StoreLikesController.index);
