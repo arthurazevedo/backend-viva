@@ -34,4 +34,15 @@ module.exports = {
 
     return res.json({ message: 'Product created' });
   },
+
+  async index(req, res) {
+    const { category } = req.body;
+
+    const { username } = req.params;
+
+    const products = await Product.findAll({ where: { username, category } });
+
+    return res.json(products);
+  },
+
 };

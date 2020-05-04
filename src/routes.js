@@ -14,6 +14,7 @@ const routes = Router();
 routes.post('/user', UserController.store);
 
 // rota de ver catalogos nao precisa de auth
+routes.get('/products/:username', ProductController.index);
 
 routes.use(authMiddleware);
 
