@@ -16,11 +16,12 @@ routes.post('/user', UserController.store);
 
 // rota de ver catalogos nao precisa de auth
 routes.get('/products/:username', ProductController.index);
-routes.get('/:username', SearchController.index);
+routes.get('/feed/:username', SearchController.index);
 
 routes.use(authMiddleware);
 
 routes.put('/user', UserController.update);
+routes.get('/user', UserController.index);
 
 routes.post('/store', StoreController.store);
 routes.get('/store', StoreController.index);
