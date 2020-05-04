@@ -37,4 +37,20 @@ module.exports = {
 
     return res.json(store);
   },
+
+  async index(req, res) {
+    const id_user = req.userId;
+    const store = await Store.findOne({ where: { id_user } });
+
+    const {
+      username, name, description, url_image,
+    } = store;
+
+    return res.json({
+      username,
+      name,
+      description,
+      url_image,
+    });
+  },
 };

@@ -20,6 +20,7 @@ routes.use(authMiddleware);
 routes.put('/user', UserController.update);
 
 routes.post('/store', StoreController.store);
+routes.get('/store', StoreController.index);
 
 const upload = multer(multerConfig);
 routes.post('/product', upload.single('file'), ProductController.store);

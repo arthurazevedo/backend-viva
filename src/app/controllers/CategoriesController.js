@@ -15,4 +15,5 @@ module.exports = {
 
     return res.json({ message: 'Category created' });
   },
+
 };
