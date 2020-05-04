@@ -6,10 +6,11 @@ const Store = require('../app/models/Store');
 const Product = require('../app/models/Product');
 const Categories = require('../app/models/Categories');
 const StoreLikes = require('../app/models/StoreLikes');
+const Wishs = require('../app/models/Wishs');
 
 const configDB = require('../config/database');
 
-const models = [User, Store, Product, Categories, StoreLikes];
+const models = [User, Store, Product, Categories, StoreLikes, Wishs];
 
 class DataBase {
   constructor() {

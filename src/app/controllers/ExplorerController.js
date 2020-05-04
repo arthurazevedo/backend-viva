@@ -7,6 +7,8 @@ module.exports = {
       order: [fn('RANDOM')],
       limit: 10,
     });
+
+
     return res.json(stores);
   },
 };

@@ -1,13 +1,14 @@
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('store_likes', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('wishs', {
     id: {
       type: Sequelize.INTEGER,
+      allowNull: false,
       autoIncrement: true,
+      primaryKey: true,
     },
     id_user: {
       type: Sequelize.INTEGER,
-      primaryKey: true,
       allowNull: false,
       references: {
         model: 'users',
@@ -16,9 +17,18 @@ module.exports = {
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE',
     },
+    id_product: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'products',
+        key: 'id',
+      },
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE',
+    },
     username: {
       type: Sequelize.STRING(20),
-      primaryKey: true,
       allowNull: false,
       references: {
         model: 'stores',
@@ -27,9 +37,8 @@ module.exports = {
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE',
     },
-    liked: {
-      type: Sequelize.BOOLEAN,
-      defaultValue: true,
+    date: {
+      type: Sequelize.STRING,
     },
     created_at: {
       type: Sequelize.DATE,
@@ -41,5 +50,5 @@ module.exports = {
     },
   }),
 
-  down: (queryInterface) => queryInterface.dropTable('store_likes'),
+  down: (queryInterface) => queryInterface.dropTable('wishs'),
 };

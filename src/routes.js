@@ -12,6 +12,7 @@ const SearchController = require('./app/controllers/SearchController');
 const StoreLikesController = require('./app/controllers/StoreLikesController');
 const FeedController = require('./app/controllers/FeedController');
 const ExplorerController = require('./app/controllers/ExplorerController');
+const WishsController = require('./app/controllers/WishsController');
 
 const routes = Router();
 
@@ -19,7 +20,7 @@ routes.post('/user', UserController.store);
 
 // rota de ver catalogos nao precisa de auth
 routes.get('/products/:username', ProductController.index);
-routes.get('/feed/:username', SearchController.index);
+routes.get('/search/:username', SearchController.index);
 
 routes.use(authMiddleware);
 
@@ -41,5 +42,8 @@ routes.get('/store-like', StoreLikesController.index);
 routes.get('/feed', FeedController.index);
 
 routes.get('/explorer', ExplorerController.index);
+
+routes.post('/wish/:username/:id_product', WishsController.store);
+routes.get('/wishs', WishsController.index);
 
 module.exports = routes;

@@ -1,6 +1,7 @@
 const Product = require('../models/Product');
 const Store = require('../models/Store');
 const bucket = require('../../config/firebase');
+const { ordenate } = require('../utils/ordenate');
 
 module.exports = {
   async store(req, res) {
@@ -44,6 +45,9 @@ module.exports = {
 
     if (!category || category === 'all') {
       const products = await Product.findAll({ where: { username } });
+
+      ordenate(products);
+
       return res.json({
         store: {
           username,
