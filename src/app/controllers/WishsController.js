@@ -8,10 +8,13 @@ module.exports = {
   async store(req, res) {
     const { username, id_product } = req.params;
 
+    const { date } = req.body;
+
     await Wish.create({
       id_user: req.userId,
       id_product,
       username,
+      date,
     });
 
     return res.json({ message: 'Wish created' });
