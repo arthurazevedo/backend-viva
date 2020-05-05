@@ -13,6 +13,7 @@ const StoreLikesController = require('./app/controllers/StoreLikesController');
 const FeedController = require('./app/controllers/FeedController');
 const ExplorerController = require('./app/controllers/ExplorerController');
 const WishsController = require('./app/controllers/WishsController');
+const ContactController = require('./app/controllers/ContactController');
 
 const routes = Router();
 
@@ -21,6 +22,7 @@ routes.post('/user', UserController.store);
 // rota de ver catalogos nao precisa de auth
 routes.get('/products/:username/:category', ProductController.index);
 routes.get('/search/:username', SearchController.index);
+routes.get('/contact/:username', ContactController.index);
 
 routes.use(authMiddleware);
 
