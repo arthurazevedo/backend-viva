@@ -1,6 +1,7 @@
 const Wish = require('../models/Wishs');
 const Store = require('../models/Store');
 const Product = require('../models/Product');
+const User = require('../models/User');
 
 module.exports = {
 
@@ -28,6 +29,11 @@ module.exports = {
           model: Product,
           as: 'product',
           attributes: ['id', 'name', 'price', 'description'],
+        },
+        {
+          model: User,
+          as: 'user',
+          attributes: ['name'],
         },
       ],
     });

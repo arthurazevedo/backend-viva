@@ -61,6 +61,8 @@ module.exports = {
 
     const products = await Product.findAll({ where: { username, category } });
 
+    ordenate(products);
+
     return res.json({
       store: {
         username,

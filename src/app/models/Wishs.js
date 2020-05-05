@@ -11,7 +11,7 @@ class Wishs extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.User, { foreignKey: 'id_user' });
+    this.belongsTo(models.User, { foreignKey: 'id_user', as: 'user' });
     this.belongsTo(models.Product, { foreignKey: 'id_product', as: 'product' });
     this.belongsTo(models.Store, { foreignKey: 'username' });
   }
