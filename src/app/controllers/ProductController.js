@@ -37,8 +37,7 @@ module.exports = {
   },
 
   async index(req, res) {
-    const { category } = req.body;
-    const { username } = req.params;
+    const { username, category } = req.params;
     const store = await Store.findOne({ where: { username } });
 
     const { name, description, url_image } = store;

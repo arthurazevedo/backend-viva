@@ -8,7 +8,6 @@ module.exports = {
       limit: 10,
     });
 
-
     return res.json(stores);
   },
 };
